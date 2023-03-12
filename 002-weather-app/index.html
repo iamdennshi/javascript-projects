@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>🌤 Weather App</title>
+</head>
+<body>
+    <main class="container">
+        <form class="search-box">
+            <i class="fa-solid fa-location-dot"></i>
+            <input type="text" name="" id="" placeholder="Введите город">
+            <button type="submit" class="fa-solid fa-magnifying-glass"></button>
+        </form>
+        <div class="not-found">
+            <p class="emoji-error">😢</p>
+            <p>Ой! Нет такого города</p>
+        </div>
+        <div class="weather-box">
+            <p class="emoji-weather">☀️</p>
+            <p class="temperature">30</p>
+            <p class="description">Облачно</p>
+        </div>
+        <div class="weather-details">
+            <div class="humidity">
+                <i class="fa-solid fa-water"></i>
+                <div class="text">
+                    <span>10%</span>
+                    <p>Влажность</p>
+                </div>
+            </div>
+            <div class="wind">
+                <i class="fa-solid fa-wind"></i>
+                <div class="text">
+                    <span>10 км/ч</span>
+                    <p>Ветер</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://kit.fontawesome.com/f665f97713.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>

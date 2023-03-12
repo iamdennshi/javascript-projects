@@ -1,0 +1,297 @@
+:root {
+    --dark: #374151;
+    --darker: #1f2937;
+    --darkest: #111827;
+    --gray: #687280;
+    --light: #EEE;
+    --blue: #489fec;
+    --purple: #8B5cf6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    height: 100vh;
+    background: var(--dark);
+   
+}
+
+input, button {
+    appearance: none;
+    border: none; 
+    background: none;
+    color: #fff;
+}   
+.container input:not(:first-child) {
+    outline: none;   
+}
+
+.mover {
+    width: 20px;
+    font-size: 16px;
+    margin-right: 10px;
+    text-align: center;
+    transition: 0.4s;
+    cursor: grabbing;
+}
+
+.mover .left {
+    margin-right: 2px;
+}
+
+.mover:hover {
+    opacity: 0.6;
+}
+
+.mover:active {
+    opacity: 0.4;
+}
+
+.container {
+    width: 800px;
+    padding: 16px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.new-task {
+    display: flex;
+    width: 100%;
+}
+
+.new-task-input {
+    flex: 1;
+    background-color: var(--darker);
+    padding: 16px;
+    border-radius: 16px;
+    margin-right: 16px;
+    font-size: 20px;
+    color: var(--light);
+}
+
+.tasks {
+    margin-top: 16px;
+    height: 70vh;
+    overflow-y: auto;
+}
+
+.task-input::placeholder {
+    color: var(--gray);
+}
+
+.new-task-submit {
+    display: flex;
+    color: var(--dark);
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 16px;
+    background-color: var(--darkest);
+    width: 52px;
+    height: 52px;
+    transition: .5s;    
+
+}
+
+.new-task-submit:hover {
+    color: var(--blue);
+ }
+
+ .new-task-submit:active {
+    color: var(--blue);
+ }
+
+
+.task-list {
+    padding: 16px 0;
+
+}
+
+.task-list-header {
+    text-align: start;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--gray);
+}
+
+.task-list-description {
+    text-align: start;
+    color: var(--gray);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--darkest);
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 16px;
+    transition: .3s;
+}
+
+.task:first-child {
+    margin: 0;
+}
+.not-done {
+    margin-bottom: 16px;
+}
+
+.mover-task {
+    background-color: var(--blue);
+}
+
+.fadeIn {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.fadeOut {
+    scale: 0;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        scale: 0;
+        opacity: 0;
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+.text {
+    color: #fff;
+    font-size: 20px;
+    width: 100%;
+    transition: 0.4s;
+    padding-right: 2vh;
+}
+
+.text:not(:read-only) {
+    color: var(--blue);
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    color: var(--blue);
+    background-color: var(--dark);
+    cursor: pointer;
+    border-radius: 10%;
+    margin-right: 10px;
+}
+
+.checkbox:hover {
+    opacity: 0.8;
+}
+
+.checkbox:active {
+    opacity: 0.6;
+ }
+
+.delete {
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: crimson; 
+    transition: 0.4s;
+}
+
+.delete:hover {
+    opacity: 0.8;
+ }
+
+.delete:active {
+    opacity: 0.6;
+ }
+ 
+ .checked {
+    color: var(--gray);
+    text-decoration: line-through;
+}
+
+.menu-bar {
+    display: none;
+    align-items: center;
+}
+
+.title-bar {
+    flex-basis: 100%;
+}
+
+.btn-wrapper {
+    display: flex;
+    padding: 0 16px;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 16px;
+    cursor: pointer;
+    height: 52px;
+    border-radius: 16px;
+    background-color: var(--darkest);
+    color: #fff;
+    transition: .5s;
+    width: 52px;
+}
+
+.btn {
+    color: var(--dark);
+    transition: .5s;
+}
+
+.del {
+    padding-right: 5px;
+}
+
+.btn-text {
+    overflow: hidden;
+    transition: .3s;
+    text-align: center;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.btn-wrapper:hover .btn {
+    cursor: pointer;
+    color: var(--blue);
+}
+
+@media screen and (min-width: 600px) {
+    .btn-wrapper:hover .btn-text {
+        margin-left: 16px;
+    }
+
+    .btn-wrapper:hover {
+        width: 190px;
+    }
+    
+    .hide-wrap:hover {
+        width: 290px;
+    }
+    
+    .all-done-wrap:hover {
+        width: 230px;
+    }
+}
+
+.del {
+    font-size: 24px;
+}
+
+.hide {
+    font-size: 18px;
+}
+
+.all-done {
+    font-size: 20px;
+}
+

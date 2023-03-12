@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Tasks</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+    <main class="container">
+        <form class="new-task">
+            <input type="text" class="new-task-input" placeholder="Что вы хотите сделать?">
+            <button type="submit" class="new-task-submit fa-solid fa-plus"></button>
+        </form>
+        <section class="task-list">
+            <header class="menu-bar">
+                <div class="title-bar">
+                    <h2 class="task-list-header">Задачи</h2>
+                    <h3 class="task-list-description">Выполнено 0 / 0</h3>
+                </div>
+                <div class="btn-wrapper hide-wrap" tabindex="0">
+                    <button class="btn hide fa-solid fa-eye-slash" tabindex="-1"></button>
+                    <div class="btn-text">скрыть выполненные</div>
+                </div>
+                <div class="btn-wrapper all-done-wrap" tabindex="0">
+                    <button class="btn all-done fa-solid fa-check" tabindex="-1"></button>
+                    <div class="btn-text">все выполненно</div>
+                </div>
+                <div class="btn-wrapper del-wrap" tabindex="0">
+                    <button class="btn del fa-solid fa-xmark" tabindex="-1"></button>
+                    <div class="btn-text">удалить все</div>
+                </div>
+            </header>
+            <div class="tasks">
+                <div class="not-done"></div>
+                <div class="done"></div>
+                <!-- <div class="task fadeIn">
+                    <button class="mover"><i class="left fa-sharp fa-solid fa-ellipsis-vertical"></i><i class="fa-sharp fa-solid fa-ellipsis-vertical"></i></button>
+                    <button class="checkbox fa-solid"></button>
+                    <input class="text" type="text" readonly="">
+                    <button class="delete fa-solid fa-minus"></button>
+                </div> -->
+            </div>
+        </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script src="https://kit.fontawesome.com/faa1a3158f.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

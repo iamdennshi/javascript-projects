@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="password-wrapper">
+            <h1 class="password">0</h1>
+            <div class="copied-info">
+                copied
+            </div>
+        </div>
+        <div class="controls">
+            <div class="char-length">
+                <div class="slider">
+                    <div class="thumb fa-solid fa-bars"></div>
+                </div> 
+                <input class="slider-input" type="number">
+            </div>
+
+            <div class="buttons">
+                <button class="uppercase active">A-Z</button>
+                <button class="lowercase">a-z</button>
+                <button class="digit">0-9</button>
+                <button class="special">/ * + &</button>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="https://kit.fontawesome.com/f665f97713.js"></script>
+</body>
+</html>
