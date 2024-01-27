@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Timer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <style>
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+  </style>
+  <body class="bg-slate-700 text-white text-center">
+    <div>
+      <textarea
+        id="task"
+        class="w-full bg-slate-700 text-white text-3xl outline-none text-center"
+        type="pl"
+        placeholder="What task do you want to solve today?"
+      ></textarea>
+    </div>
+    <div>
+      <div class="flex justify-center text-5xl font-bold relative">
+        <input
+          id="hours"
+          type="number"
+          class="bg-inherit text-inherit text-5xl text-center outline-none w-20"
+          value="00"
+          max="99"
+          min="0"
+          required
+        />
+        <p class="relative pt-1">
+          :
+          <span id="plus" hidden class="absolute -left-[110px] top-[5px]"
+            >+</span
+          >
+        </p>
+        <input
+          id="minutes"
+          type="number"
+          class="bg-inherit text-inherit text-center outline-none w-20"
+          value="00"
+          max="59"
+          min="0"
+          required
+        />
+        <p class="pt-1">:</p>
+        <input
+          id="seconds"
+          type="number"
+          class="bg-inherit text-inherit text-center outline-none w-20"
+          value="00"
+          max="59"
+          min="0"
+          required
+        />
+      </div>
+      <div class="flex justify-center gap-5">
+        <button
+          id="start"
+          class="w-16 h-16 hover:bg-slate-500 rounded-full p-2"
+        >
+          <img src="./assets/start.svg" />
+        </button>
+        <button
+          id="done"
+          hidden
+          class="w-16 h-16 hover:bg-slate-500 rounded-full p-2"
+        >
+          <img src="./assets/done.svg" />
+        </button>
+        <button
+          id="pass"
+          hidden
+          class="w-16 h-16 hover:bg-slate-500 rounded-full p-2"
+        >
+          <img src="./assets/pass.svg" />
+        </button>
+      </div>
+    </div>
+  </body>
+  <script>
+    let timerID = null;
+    let lastSetTime = { hours: 0, minutes: 0, seconds: 0 };
+
+    const normalizeTime = (value, max) => {
+      const number = Number(value);
+
+      if (number >= 0 && number <= 9) {
+        return "0" + number;
+      } else if (number > max) {
+        return max;
+      } else {
+        return number;
+      }
+    };
+
+    const handleInputTimer = (e) => {
+      const target = e.currentTarget;
+      target.value = normalizeTime(target.value, target.max);
+    };
+
+    const handleStart = () => {
+      let h = Number(hours.value);
+      let m = Number(minutes.value);
+      let s = Number(seconds.value);
+
+      if (h == 0 && m == 0 && s == 0) return;
+
+      lastSetTime.hours = normalizeTime(h);
+      lastSetTime.minutes = normalizeTime(m);
+      lastSetTime.seconds = normalizeTime(s);
+
+      hours.disabled = true;
+      minutes.disabled = true;
+      seconds.disabled = true;
+      task.disabled = true;
+
+      timerID = setInterval(() => {
+        if (s > 0) {
+          --s;
+          seconds.value = normalizeTime(s);
+        } else if (m > 0) {
+          --m;
+          s = 59;
+          minutes.value = normalizeTime(m);
+          seconds.value = 59;
+        } else if (h > 0) {
+          --h;
+          m = 59;
+          s = 59;
+          hours.value = normalizeTime(h);
+          minutes.value = 59;
+          seconds.value = 59;
+        } else {
+          clearInterval(timerID);
+          new Audio("./assets/beep.mp3").play();
+          plus.hidden = false;
+
+          timerID = setInterval(() => {
+            ++s;
+            if (s == 60) {
+              s = 0;
+              ++m;
+              minutes.value = normalizeTime(m);
+              if (m == 60) {
+                m = 0;
+                ++h;
+                hours.value = normalizeTime(h);
+              }
+            }
+            seconds.value = normalizeTime(s);
+          }, 1000);
+        }
+      }, 1000);
+
+      start.hidden = true;
+      done.hidden = false;
+      pass.hidden = false;
+    };
+
+    const handleDone = () => {
+      hours.disabled = false;
+      minutes.disabled = false;
+      seconds.disabled = false;
+      task.disabled = false;
+      start.hidden = false;
+      done.hidden = true;
+      pass.hidden = true;
+      plus.hidden = true;
+
+      hours.value = lastSetTime.hours;
+      minutes.value = lastSetTime.minutes;
+      seconds.value = lastSetTime.seconds;
+
+      clearInterval(timerID);
+    };
+
+    hours.oninput = handleInputTimer;
+    minutes.oninput = handleInputTimer;
+    seconds.oninput = handleInputTimer;
+    start.onclick = handleStart;
+    done.onclick = handleDone;
+  </script>
+</html>
