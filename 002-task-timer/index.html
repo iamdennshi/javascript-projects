@@ -7,12 +7,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+    body {
+      font-family: "Roboto", "sans-serif";
+    }
+
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
       -webkit-appearance: none;
     }
   </style>
-  <body class="bg-slate-700 text-white text-center">
+  <body class="container bg-slate-700 text-white text-center m-auto px-2">
     <div>
       <textarea
         id="task"
@@ -80,6 +86,40 @@
           <img src="./assets/pass.svg" />
         </button>
       </div>
+    </div>
+    <div class="rounded-lg overflow-hidden bg-slate-800">
+      <table class="w-full">
+        <thead class="uppercase">
+          <tr class="text-gray-500 border-b border-slate-700">
+            <th scope="col" class="px-6 py-3 text-left">Task</th>
+            <th scope="col" class="px-6 py-3">Time</th>
+            <th scope="col" class="px-6 py-3">Date</th>
+            <th scope="col" class="px-6 py-3">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hover:bg-slate-500 border-b border-slate-700">
+            <td class="px-6 py-3 text-left">Slove task from leetcode</td>
+            <td class="px-6 py-3">Hello</td>
+            <td class="px-6 py-3">Hello</td>
+            <td class="px-6 py-3">
+              <svg class="w-6 h-6 m-auto">
+                <circle cx="50%" cy="50%" r="10" fill="#89D185" />
+              </svg>
+            </td>
+          </tr>
+          <tr class="border-b border-slate-700 hover:bg-slate-500">
+            <td class="px-6 py-3 text-left">Slove task from leetcode</td>
+            <td class="px-6 py-3">Hello</td>
+            <td class="px-6 py-3">Hello</td>
+            <td class="px-6 py-3">
+              <svg class="w-6 h-6 m-auto">
+                <circle cx="50%" cy="50%" r="10" fill="#F48771" />
+              </svg>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </body>
   <script>
