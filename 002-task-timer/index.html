@@ -5,19 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Timer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
-
-    body {
-      font-family: "Roboto", "sans-serif";
-    }
-
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-    }
-  </style>
   <body class="container bg-slate-700 text-white text-center m-auto px-2">
     <div>
       <textarea
@@ -97,132 +87,20 @@
             <th scope="col" class="px-6 py-3">Status</th>
           </tr>
         </thead>
-        <tbody>
-          <tr class="hover:bg-slate-500 border-b border-slate-700">
-            <td class="px-6 py-3 text-left">Slove task from leetcode</td>
-            <td class="px-6 py-3">Hello</td>
-            <td class="px-6 py-3">Hello</td>
-            <td class="px-6 py-3">
-              <svg class="w-6 h-6 m-auto">
-                <circle cx="50%" cy="50%" r="10" fill="#89D185" />
-              </svg>
-            </td>
-          </tr>
-          <tr class="border-b border-slate-700 hover:bg-slate-500">
-            <td class="px-6 py-3 text-left">Slove task from leetcode</td>
-            <td class="px-6 py-3">Hello</td>
-            <td class="px-6 py-3">Hello</td>
-            <td class="px-6 py-3">
-              <svg class="w-6 h-6 m-auto">
-                <circle cx="50%" cy="50%" r="10" fill="#F48771" />
-              </svg>
-            </td>
-          </tr>
-        </tbody>
+        <tbody id="table"></tbody>
       </table>
+      <template id="template">
+        <tr class="border-b border-slate-700 hover:bg-slate-500">
+          <td class="px-6 py-3 text-left">Slove task from leetcode</td>
+          <td class="px-6 py-3">Hello</td>
+          <td class="px-6 py-3">Hello</td>
+          <td class="px-6 py-3">
+            <svg class="w-6 h-6 m-auto">
+              <circle cx="50%" cy="50%" r="10" />
+            </svg>
+          </td>
+        </tr>
+      </template>
     </div>
   </body>
-  <script>
-    let timerID = null;
-    let lastSetTime = { hours: 0, minutes: 0, seconds: 0 };
-
-    const normalizeTime = (value, max) => {
-      const number = Number(value);
-
-      if (number >= 0 && number <= 9) {
-        return "0" + number;
-      } else if (number > max) {
-        return max;
-      } else {
-        return number;
-      }
-    };
-
-    const handleInputTimer = (e) => {
-      const target = e.currentTarget;
-      target.value = normalizeTime(target.value, target.max);
-    };
-
-    const handleStart = () => {
-      let h = Number(hours.value);
-      let m = Number(minutes.value);
-      let s = Number(seconds.value);
-
-      if (h == 0 && m == 0 && s == 0) return;
-
-      lastSetTime.hours = normalizeTime(h);
-      lastSetTime.minutes = normalizeTime(m);
-      lastSetTime.seconds = normalizeTime(s);
-
-      hours.disabled = true;
-      minutes.disabled = true;
-      seconds.disabled = true;
-      task.disabled = true;
-
-      timerID = setInterval(() => {
-        if (s > 0) {
-          --s;
-          seconds.value = normalizeTime(s);
-        } else if (m > 0) {
-          --m;
-          s = 59;
-          minutes.value = normalizeTime(m);
-          seconds.value = 59;
-        } else if (h > 0) {
-          --h;
-          m = 59;
-          s = 59;
-          hours.value = normalizeTime(h);
-          minutes.value = 59;
-          seconds.value = 59;
-        } else {
-          clearInterval(timerID);
-          new Audio("./assets/beep.mp3").play();
-          plus.hidden = false;
-
-          timerID = setInterval(() => {
-            ++s;
-            if (s == 60) {
-              s = 0;
-              ++m;
-              minutes.value = normalizeTime(m);
-              if (m == 60) {
-                m = 0;
-                ++h;
-                hours.value = normalizeTime(h);
-              }
-            }
-            seconds.value = normalizeTime(s);
-          }, 1000);
-        }
-      }, 1000);
-
-      start.hidden = true;
-      done.hidden = false;
-      pass.hidden = false;
-    };
-
-    const handleDone = () => {
-      hours.disabled = false;
-      minutes.disabled = false;
-      seconds.disabled = false;
-      task.disabled = false;
-      start.hidden = false;
-      done.hidden = true;
-      pass.hidden = true;
-      plus.hidden = true;
-
-      hours.value = lastSetTime.hours;
-      minutes.value = lastSetTime.minutes;
-      seconds.value = lastSetTime.seconds;
-
-      clearInterval(timerID);
-    };
-
-    hours.oninput = handleInputTimer;
-    minutes.oninput = handleInputTimer;
-    seconds.oninput = handleInputTimer;
-    start.onclick = handleStart;
-    done.onclick = handleDone;
-  </script>
 </html>
