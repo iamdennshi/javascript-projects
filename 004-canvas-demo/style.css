@@ -1,0 +1,30 @@
+body {
+  font-family: monospace;
+  background-color: #000;
+  color: #fff;
+}
+
+.container {
+  margin: 0 auto;
+  width: 800px;
+}
+
+canvas {
+  background-color: #000;
+  border: 1px solid #fff;
+}
+.controls {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+label {
+  display: block;
+}
+.tablo {
+  font-size: 32px;
+}
+
+.hidden {
+  display: none;
+}

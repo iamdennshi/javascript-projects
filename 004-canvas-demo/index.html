@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas demo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <canvas id="canvas" width="800" height="600"></canvas>
+      <div class="controls">
+        <input id="color1" type="color" value="#FF0000" />
+        <div>
+          <label for="speed1">Скорость:</label>
+          <input
+            type="range"
+            id="speed1"
+            min="1"
+            max="5"
+            step="0.5"
+            value="2"
+          />
+          <label for="fireRate1">Частота стрельбы:</label>
+          <input
+            type="range"
+            id="fireRate1"
+            min="0.01"
+            max="0.05"
+            step="0.01"
+            value="0.02"
+          />
+        </div>
+        <div class="tablo">
+          <span class="tablo1">00</span>:<span class="tablo2">00</span>
+        </div>
+        <div>
+          <label for="speed2">Скорость:</label>
+          <input
+            type="range"
+            id="speed2"
+            min="1"
+            max="5"
+            step="0.5"
+            value="2"
+          />
+          <label for="fireRate2">Частота стрельбы:</label>
+          <input
+            type="range"
+            id="fireRate2"
+            min="0.01"
+            max="0.05"
+            step="0.01"
+            value="0.02"
+          />
+        </div>
+        <input id="color2" type="color" value="#0000FF" />
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
