@@ -7,4 +7,7 @@
  
 ### 🔑 [Password Generation](https://codepen.io/iamdennshi/pen/XWPZKmK)
  <img height='420px' src='https://github.com/iamdennshi/javascript-projects/assets/89966869/9c037c40-aff3-4c89-8196-5691325a59f9'>
+
+### 🔴🔵 [Canvas Demo](https://codepen.io/iamdennshi/pen/qBzMBzd)
+<img height='420px' src='https://github.com/user-attachments/assets/87c08268-d4f4-4571-b263-343a44007776'>
 </div>
